@@ -7,14 +7,28 @@
 </head>
 <body>
 
-    <input type="text" id="usuari" name="usuari" placeholder="usuari">
+    <input type="text" id="usuari" placeholder="usuari">
     <br>
-    <input type="password" id="contrasenya" name="contrasenya" placeholder="contrasenya">
+    <input type="password" id="contrasenya" placeholder="contrasenya">
     <br>
-    <button onclick="fes_login()">Login</button>
+    <button onclick="fes()">Login</button>
+
+    <br>
+    <br>
+
+    <input type="text" id="reg_usuari" placeholder="usuari">
+    <br>
+    <input type="email" id="reg_email" placeholder="email">
+    <br>
+    <input type="password" id="reg_contrasenya_1" placeholder="contrasenya">
+    <br>
+    <input type="password" id="reg_contrasenya_2" placeholder="repeteix contrasenya">
+    <br>
+    <button onclick="fes()">Registra</button>
+
 
     <script type="text/javascript">
-        function fes_login() {
+        function fes() {
             alert("Login exitós");
             console.log("Login...");
         }
