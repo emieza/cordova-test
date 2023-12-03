@@ -30,7 +30,7 @@ cmd.on("close", code => {
     // Configurem driver
     let driver = await new Builder()
             .forBrowser(Browser.FIREFOX)
-            //.setFirefoxOptions(new firefox.Options().headless())
+            .setFirefoxOptions(new firefox.Options().headless())
             //.forBrowser(Browser.CHROME)
             //.setChromeOptions(new chrome.Options().addArguments('--headless=new'))
             .build();

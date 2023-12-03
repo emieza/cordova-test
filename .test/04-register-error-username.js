@@ -29,10 +29,10 @@ cmd.on("close", code => {
 (async function test_exemple() {
     // Configurem driver
     let driver = await new Builder()
-            //.forBrowser(Browser.FIREFOX)
-            //.setFirefoxOptions(new firefox.Options().headless())
-            .forBrowser(Browser.CHROME)
-            .setChromeOptions(new chrome.Options().addArguments('--headless=new'))
+            .forBrowser(Browser.FIREFOX)
+            .setFirefoxOptions(new firefox.Options().headless())
+            //.forBrowser(Browser.CHROME)
+            //.setChromeOptions(new chrome.Options().addArguments('--headless=new'))
             .build();
     try {
         // deixem temps a que el servidor es posi en marxa
