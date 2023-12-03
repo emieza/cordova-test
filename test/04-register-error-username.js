@@ -57,23 +57,18 @@ cmd.on("close", code => {
         assert(alertText==assertMessage,"ERROR TEST: al registrar un nou usuari hauria d'aparèixer un alert amb el missatge '"+assertMessage+"'.");
         await alert.accept();
 
-        // testejem LOGIN CORRECTE pel nou usuari
-        //////////////////////////////////////////////////////
-        await driver.get("http://localhost:8000/browser/www/");
-        await driver.findElement(By.id("usuari")).sendKeys(nouusuari);
-        await driver.findElement(By.id("contrasenya")).sendKeys(novacontrasenya);
-        await driver.findElement(By.xpath("//button[text()='Login']")).click();
-
+        // Si intentem tornar-lo a registrar, ha de donar error de nom d'usuari
+        await driver.findElement(By.xpath("//button[text()='Registra']")).click();
         // comprovem que l'alert message és correcte
-        await driver.wait(until.alertIsPresent(),2000,"ERROR TEST: després del login ha d'aparèixer un alert amb el resultat de la validació de la contrasenya.");
+        await driver.wait(until.alertIsPresent(),2000,"ERROR TEST: després del REGISTRE ha d'aparèixer un alert amb el resultat de la introducció del nou usuari.");
         alert = await driver.switchTo().alert();
         alertText = await alert.getText();
-        assertMessage = "Login exitós";
-        assert(alertText==assertMessage,"ERROR TEST: El nou usuari registrat no es loga correctament.");
+        assertMessage = "El nom o l'email ja existeixen a la base de dades";
+        assert(alertText==assertMessage,"ERROR TEST: al registrar un nou usuari amb un nom o email ja present, hauria d'aparèixer un alert amb el missatge '"+assertMessage+"'.");
         await alert.accept();
 
-        // temps d'espera final
-        await driver.sleep(2000);
+        console.log("TEST OK");
+
     } finally {
         // tanquem servidor
         await cmd.kill("SIGHUP")
